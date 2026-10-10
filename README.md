@@ -18,6 +18,24 @@ If the phone cannot connect, Windows Firewall is usually blocking Node. Allow No
 
 > Over plain `http://` on a LAN address the app works, but the browser will **not** register the service worker or offer *Install app* (those need HTTPS or `localhost`). Install/offline are tested on a deployed HTTPS build, or with `npm run build && npm run preview` on the PC.
 
+## Deploy (Vercel)
+
+1. Import the repo at vercel.com/new. The Vite preset is detected (build `npm run build`, output `dist`).
+2. Before the first deploy, add environment variables (Settings → Environment Variables), then redeploy after any change:
+
+| Variable | Required | What it does |
+|---|---|---|
+| `GEMINI_API_KEY` | yes | Free key from aistudio.google.com/apikey. Server-side only; without it AI cards show "not available" and everything else works. |
+| `AI_DAILY_CAP` | no | Max AI requests per day across all users (default `300`). Set it to match your Google quota. |
+| `AI_ALLOWED_ORIGINS` | no | Extra sites allowed to call `/api/ai`, comma-separated (e.g. `https://app.example.com`). |
+| `GEMINI_MODEL` | no | Override the default model (`gemini-3.5-flash-lite`) if Google retires it. |
+
+**Custom domain:** if you add a domain to this same Vercel project, nothing else is needed: the app and `/api/ai` share the domain, so requests match. Only list a domain in `AI_ALLOWED_ORIGINS` if a *different* site or project serves the front end and calls this project's `/api/ai`. Otherwise AI calls get a 403.
+
+**Local:** put `GEMINI_API_KEY=...` in `.env.local` (git-ignored). `npm run dev` serves `/api/ai` through a small dev stand-in in `vite.config.ts`.
+
+**Limits:** the per-visitor and daily counters live in the function's memory and reset when Vercel recycles it, so they are a brake, not a guarantee. Use Vercel KV / Upstash for a hard cap. All users share one free Google quota; when it runs out the app shows the rule-based insight.
+
 ## Scripts
 
 | Command | What it does |
@@ -54,7 +72,7 @@ Colours, surfaces, borders and mastery bands are CSS variables in `src/index.css
 - `src/lib/ops.ts` – pure operations with cascading deletes + `checkIntegrity`. `src/lib/dates.ts`, `src/lib/prng.ts` – helpers.
 - `src/data/seed.ts` – deterministic demo school (same output for the same date; Rafi, 3 batches, 27 students).
 - `src/store/data.ts` (school data, persisted `aster-data`) and `src/store/settings.ts` (device prefs, `aster-settings`), both versioned with migrations in `src/store/migrations.ts`.
-- `src/lib/backup.ts` + `src/store/actions.ts` – export / import / reset. Backups never contain the AI key. Settings → **Your data** has the buttons.
+- `src/lib/backup.ts` + `src/store/actions.ts` – export / import / reset. Settings → **Your data** has the buttons.
 - To change a stored shape: bump the version in `migrations.ts` and add a step.
 
 ## Calculations (M2): all pure, all tested, in `src/lib/`
@@ -113,11 +131,11 @@ Colours, surfaces, borders and mastery bands are CSS variables in `src/index.css
 
 ## AI insights (M6, teacher only, optional)
 
-- **Off by default.** The teacher pastes their own free Google Gemini key in Profile, reads a consent notice, and turns it on. Students and parents never use AI. Everything else works without it.
+- **Always on, no setup.** Teachers never handle a key. They read a one-time data notice on the AI card and tap *I understand*. Students and parents never use AI. Everything else works without it.
+- **The key lives on the server.** The app calls `/api/ai` (`api/ai.ts`, a Vercel function), which adds `GEMINI_API_KEY` and forwards the request to Gemini. No key is ever in the browser bundle. The function only accepts requests from its own site, caps request size, fixes the model, and rate-limits per visitor and per day. See **Deploy** below.
 - **Anonymised.** `src/lib/ai/anonymize.ts` sends only topic names, percentages, trends, attendance, goals and study time. Students become letters (A, B…), topics become T1, T2…; answers are mapped back on the device. `src/lib/ai/privacy.ts` double-checks every request and blocks it if any name, phone number, batch or center name is found. Tests cover every seed student and batch.
-- **Safe answers.** Gemini is asked for JSON; `schemas.ts` drops any topic or student the model invented. Bad JSON is retried once. Errors (bad key, quota, offline, blocked, timeout) have plain messages in English and বাংলা.
+- **Safe answers.** Gemini is asked for JSON; `schemas.ts` drops any topic or student the model invented. Bad JSON is retried once. Errors (unavailable, quota, offline, blocked, timeout) have plain messages in English and বাংলা.
 - **Cheap.** Answers are saved on the device (`aster-ai-cache`, last 40, keyed by data + model + language + prompt version), so the same data never spends quota twice. A local counter shows "N of 5 free insights this month"; over the limit it shows the Tutor Pro notice with "Generate anyway (demo)". It never hard-blocks.
-- The key is stored only in this browser and is never included in backups. Use *Test connection* in Profile after pasting it.
 - Known risk: Google's free tier says it is for adults and may use free-tier requests to improve products. Disclosed in the consent notice; a paid key avoids the second point.
 
 ## Centers with several teachers (demo)
