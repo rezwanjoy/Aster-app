@@ -1,0 +1,34 @@
+# dependencies and build output
+node_modules
+dist
+dev-dist
+*.tsbuildinfo
+coverage
+
+# secrets and local settings (the Gemini key lives in .env.local)
+.env
+.env.*
+*.local
+
+# Vercel (created by the CLI, not part of the source)
+.vercel
+
+# Claude Code files: project rules, skills, launch config
+.claude
+CLAUDE.md
+
+# browser-test scratch files
+.playwright
+.playwright-cli
+
+# every Markdown file except the README (the brief and notes stay on this PC)
+*.md
+!README.md
+
+# editor, OS and log noise
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*

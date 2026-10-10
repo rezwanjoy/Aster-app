@@ -1,0 +1,1238 @@
+{
+  "app": {
+    "name": "Aster",
+    "tagline": "Know what to study next.",
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "teacher": {
+      "today": "Today",
+      "batches": "Batches",
+      "marks": "Marks",
+      "insights": "Insights",
+      "fees": "Fees"
+    },
+    "student": {
+      "plan": "Plan",
+      "progress": "Progress",
+      "topics": "Topics",
+      "goals": "Goals"
+    },
+    "settings": "Profile"
+  },
+  "mode": {
+    "label": "View as",
+    "teacher": "Teacher",
+    "student": "Student",
+    "center": "Center"
+  },
+  "topbar": {
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "common": {
+    "primary": "Primary action",
+    "secondary": "Secondary action",
+    "on": "On",
+    "off": "Off",
+    "demoData": "Sample data",
+    "demoVersion": "Demo version",
+    "weekShort": "W",
+    "students": "Students",
+    "student": "Student",
+    "attendance": "Attendance",
+    "mastery": "Mastery",
+    "viewAll": "View all",
+    "min": "min",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "delete": "Delete",
+    "done": "Done",
+    "edit": "Edit",
+    "editName": "Edit {name}",
+    "save": "Save",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "back": "Back",
+    "testShort": "T"
+  },
+  "trend": {
+    "up": "Improving",
+    "flat": "Steady",
+    "down": "Slipping"
+  },
+  "reason": {
+    "trendDown": "Marks falling",
+    "lowAttendance": "Low attendance",
+    "manyRed": "Many weak topics",
+    "feeLate": "Fees late"
+  },
+  "fee": {
+    "paid": "Paid",
+    "partial": "Partial",
+    "due": "Due",
+    "overdue": "Overdue"
+  },
+  "task": {
+    "learn": "Learn",
+    "practice": "Practice",
+    "review": "Review",
+    "custom": "My task"
+  },
+  "reasonTask": {
+    "red": "Weak in your last test",
+    "yellow": "Getting there, keep going",
+    "spaced": "Quick spaced review",
+    "new": "New topic, no marks yet"
+  },
+  "page": {
+    "teacher": {
+      "today": {
+        "title": "Today",
+        "desc": "Today's classes, quick actions and alerts."
+      },
+      "batches": {
+        "title": "Batches",
+        "desc": "Your batches, students and class schedule."
+      },
+      "marks": {
+        "title": "Marks",
+        "desc": "Exam marks recorded per topic, not just a total."
+      },
+      "insights": {
+        "title": "Insights",
+        "desc": "Weak topics and students who need attention."
+      },
+      "fees": {
+        "title": "Fees",
+        "desc": "Who paid, who owes, and polite reminders."
+      }
+    },
+    "student": {
+      "plan": {
+        "title": "Plan",
+        "desc": "Your study tasks for today and this week."
+      },
+      "progress": {
+        "title": "Progress",
+        "desc": "Your marks trend, attendance and your goal."
+      },
+      "topics": {
+        "title": "Topics",
+        "desc": "Your weak-topic map, weakest first."
+      },
+      "goals": {
+        "title": "Goals",
+        "desc": "Target grade, study days and daily minutes."
+      }
+    }
+  },
+  "teacher": {
+    "today": {
+      "eyebrow": "Overview",
+      "greeting": "Welcome back, {name}",
+      "desc": "Here is how your classes are doing today.",
+      "nextClass": "Next class",
+      "reteachHint": "Reteach: {topic}",
+      "quick": "Quick actions",
+      "qBatches": "Open batches",
+      "qMarks": "See marks",
+      "qFees": "Check fees",
+      "batchesHint": "Across {n} batches",
+      "last4w": "Last 4 weeks",
+      "avgAll": "Average of all batches",
+      "feesDue": "Fees due",
+      "thisMonth": "This month",
+      "attendanceChart": "Weekly attendance",
+      "batchMath": "Class 10 Maths",
+      "weakTopics": "Weakest topics",
+      "weakNote": "Share of the batch in the weak band.",
+      "attention": "Students who need attention",
+      "allGood": "Nobody needs special attention right now.",
+      "noAttendance": "No classes logged in this period.",
+      "noClasses": "No upcoming classes. Add class days to a batch.",
+      "noMarks": "No exam marks yet.",
+      "openFees": "Open fees",
+      "range": "Attendance period",
+      "range4": "4 weeks",
+      "range8": "8 weeks",
+      "rangeTerm": "Term",
+      "reteachNote": "{n} topic(s) at 40% or more. Consider reteaching.",
+      "termLine": "Day {day} of {total} of this term"
+    },
+    "batches": {
+      "eyebrow": "Your classes",
+      "next": "Next"
+    },
+    "marks": {
+      "eyebrow": "Assessments",
+      "sub": "{batch} · out of 10 per topic",
+      "perTopic": "Per-topic marks",
+      "note": "Sample marks shown. Real entry arrives in a later release: a spreadsheet-style grid on PC and a student-by-student stepper on phone."
+    },
+    "insights": {
+      "eyebrow": "Class insight",
+      "basic": "Basic insight",
+      "headline": "{pct}% of this batch is weak in {topic}. Reteach this.",
+      "sub": "Based on per-topic marks from recent tests. A revision class on this topic will help the most students.",
+      "ranking": "Batch weak-topic ranking",
+      "rankNote": "Topics at 40% or more are suggested for a reteach.",
+      "attention": "Needs attention",
+      "trend": "Batch average by test",
+      "changes": "Topics that are moving",
+      "allGood": "Everything looks steady right now.",
+      "more": "Also worth a look",
+      "planRevision": "Log a revision class",
+      "reteachChip": "Reteach",
+      "subGeneral": "Based on marks, attendance and class ratings from the last few weeks.",
+      "trendNeed": "Needs at least two exams with marks.",
+      "trendNote": "From {first} to {last} ({date}).",
+      "showAll": "Show all {n} topics",
+      "showFewer": "Show fewer"
+    },
+    "fees": {
+      "eyebrow": "This month",
+      "collected": "Collected",
+      "of": "of {total}",
+      "owed": "{amount} still to collect",
+      "collectedShort": "collected",
+      "list": "Student fees",
+      "note": "WhatsApp reminders arrive in a later release."
+    },
+    "empty": {
+      "title": "Welcome! Let's set up your first batch",
+      "body": "Add your first batch to start logging classes, marks and fees."
+    },
+    "switcher": {
+      "label": "Batch",
+      "all": "All batches ({n})"
+    }
+  },
+  "student": {
+    "plan": {
+      "eyebrow": "Today's plan",
+      "greeting": "Hi {name}, let's go",
+      "desc": "A short plan built from your weak topics.",
+      "streak": "Study streak",
+      "days": "days",
+      "note": "Small steps every day beat long sessions once a week. Finish today's tasks to keep your streak alive.",
+      "week": "this week",
+      "today": "Today's tasks",
+      "allDone": "All done for today. Great work!",
+      "tips": "Study tips",
+      "tip1": "Start with the topic you find hardest while your mind is fresh.",
+      "tip2": "After solving a question, explain the steps out loud in your own words.",
+      "tip3": "A 5-minute review the next day helps you remember much longer.",
+      "addTask": "Add my own task",
+      "best": "Longest streak: {n} days",
+      "changeGoals": "Change my goals",
+      "create": "Create my plan",
+      "editTask": "Edit {name}",
+      "empty": "You don't have a plan yet. Create one from your weak topics.",
+      "last7": "Last 7 days",
+      "noneToday": "Nothing planned for today.",
+      "noneWeek": "Nothing planned for the rest of the week.",
+      "ownTask": "My own task",
+      "tasks": "Tasks",
+      "thisWeek": "This week",
+      "tipsBasic": "Basic tips",
+      "tipsEmpty": "Tips appear once you have exam marks.",
+      "tipsNote": "Worked out from your marks and attendance.",
+      "update": "Update my plan"
+    },
+    "progress": {
+      "eyebrow": "How you're doing",
+      "current": "Current level",
+      "currentHint": "Weighted toward recent tests",
+      "goal": "Your goal",
+      "goalHint": "A+ in Mathematics",
+      "trend": "Marks trend",
+      "subject": "Mathematics",
+      "hereVsGoal": "You are here vs your goal",
+      "of": "of {goal}",
+      "gap": "{gap} points to go",
+      "feedback": "Teacher feedback",
+      "feedbackText": "Your algebra is getting stronger. Spend a little time on quadratic equations and trigonometry this week and you will see the difference.",
+      "feedbackBy": "Sample feedback",
+      "noExams": "No exam results yet.",
+      "noMarks": "No marks yet",
+      "noNotes": "No notes from your teacher yet.",
+      "reached": "You've reached your goal level. Keep it up!",
+      "recent": "Recent exams",
+      "setGoal": "Set a goal to see how far you have to go."
+    },
+    "topics": {
+      "eyebrow": "Topic map",
+      "legend": "Colour guide",
+      "goPlan": "Open my plan",
+      "noMarks": "No marks for this topic yet.",
+      "noTasks": "Nothing planned for this topic yet.",
+      "open": "Open {topic}",
+      "planSays": "What your plan says",
+      "say": {
+        "red": "This topic needs the most attention right now.",
+        "yellow": "You're getting there: a bit more practice will help.",
+        "green": "This is a strength. A quick review keeps it strong."
+      }
+    },
+    "goals": {
+      "eyebrow": "Your targets",
+      "target": "Target grade",
+      "targetSub": "{pct}% or more in Mathematics by {date}",
+      "december": "December",
+      "now": "Now {pct}%",
+      "studyDays": "Study days",
+      "daysCount": "{n} days a week",
+      "daily": "Minutes per day",
+      "recommended": "15 recommended",
+      "less": "Less time",
+      "more": "More time",
+      "weekTotal": "About {min} minutes each week",
+      "by": "by {date}",
+      "edit": "Change goal",
+      "none": "No goal yet for this subject.",
+      "planUpdated": "Your plan is updated.",
+      "set": "Set a goal",
+      "study": "Study time",
+      "updateHint": "Changed your days or minutes? Update your plan to match."
+    },
+    "noStudents": "There are no students yet. Ask your teacher to add you.",
+    "noSubjects": "No subjects yet. Join a batch first.",
+    "bar": {
+      "inbox": "Inbox",
+      "inboxUnread": "Inbox, {n} new",
+      "who": "Who is using Aster?"
+    },
+    "dot": {
+      "done": "done",
+      "missed": "missed",
+      "rest": "rest day",
+      "today": "today"
+    },
+    "inbox": {
+      "desc": "Messages from your teacher.",
+      "empty": "No messages yet.",
+      "eyebrow": "Messages",
+      "new": "New",
+      "note": "In this demo, messages are saved on this device. They don't reach another phone.",
+      "title": "Inbox"
+    },
+    "tip": {
+      "attendance": "Your attendance is {pct}%: try to come to every class.",
+      "goal": "Your {subject} goal needs more work: start with the weak topics.",
+      "practice": "Practise {topic}: it is one of your weakest areas.",
+      "protect": "Keep {topic} strong with a quick review each week."
+    },
+    "class": {
+      "all": "All classes",
+      "batch": "Batch",
+      "choose": "Choose a class",
+      "coaching": "Coaching center",
+      "count": "{n} classes",
+      "days": "Class days",
+      "next": "Next class",
+      "subject": "Subject",
+      "teacher": "Teacher"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "desc": "Language, numbers and theme. More options arrive in later releases.",
+    "language": "Language",
+    "numerals": "Bangla numerals (০–৯)",
+    "numeralsHint": "Show digits in Bangla when the language is Bangla.",
+    "theme": "Theme",
+    "preview": "Design preview",
+    "previewDesc": "Mastery colours always come with an icon and a label, never colour alone.",
+    "sampleNumber": "Sample number",
+    "sampleDate": "Sample date",
+    "data": {
+      "title": "Your data",
+      "desc": "Everything is stored on this device. Back it up, restore it, or start again with the sample school.",
+      "batches": "Batches",
+      "students": "Students",
+      "exams": "Exams",
+      "classes": "Classes logged",
+      "export": "Export backup",
+      "import": "Import backup",
+      "reset": "Reset demo data",
+      "exported": "Backup downloaded.",
+      "imported": "Backup restored.",
+      "importFailed": "Could not import",
+      "resetDone": "Demo data was reset.",
+      "resetTitle": "Reset demo data?",
+      "resetBody": "This replaces everything on this device with the sample school. Export a backup first if you want to keep your changes.",
+      "importTitle": "Replace your data with this backup?",
+      "importBody": "The backup has {batches} batches and {students} students. Your current data on this device will be replaced.",
+      "keyNote": "Backups never include your AI key."
+    }
+  },
+  "mastery": {
+    "red": "Weak",
+    "yellow": "Getting there",
+    "green": "Strong",
+    "unknown": "No data"
+  },
+  "pwa": {
+    "updateTitle": "A new version is ready",
+    "updateBody": "Reload to get the latest Aster.",
+    "reload": "Reload",
+    "later": "Later",
+    "offlineTitle": "Ready to work offline",
+    "offlineBody": "Aster is saved on this device and opens without internet.",
+    "dismiss": "OK"
+  },
+  "forms": {
+    "badDate": "Enter a valid date",
+    "badNumber": "Enter a number (0 or more)",
+    "required": "This is required"
+  },
+  "students": {
+    "add": "Add student"
+  },
+  "batchForm": {
+    "addTitle": "Add a batch",
+    "editTitle": "Edit batch",
+    "name": "Batch name",
+    "nameBn": "Name in Bangla (optional)",
+    "level": "Class / level",
+    "term": "Term",
+    "subjects": "Subjects",
+    "pickSubject": "Choose at least one subject",
+    "classDays": "Class days",
+    "time": "Start time",
+    "fee": "Monthly fee (৳)",
+    "deleteTitle": "Delete {name}?",
+    "deleteBody": "This also deletes its classes, exams, marks and fees. {students} student(s) who are only in this batch will be removed too. This can't be undone.",
+    "teacher": "Teacher",
+    "noTeacher": "No teacher yet"
+  },
+  "batches": {
+    "add": "Add batch",
+    "back": "All batches",
+    "classMeta": "Understanding {u}/5 · {p} of {t} present",
+    "currentTerm": "Current term",
+    "deleteClass": "Delete this class?",
+    "feesCollected": "Fees collected",
+    "insight": "Insight for this batch",
+    "newTerm": "New term",
+    "noClasses": "No classes logged yet.",
+    "noSchedule": "No class days set",
+    "noStudents": "No students yet. Add the first one.",
+    "notFound": "This batch no longer exists.",
+    "open": "Open",
+    "perMonth": "/month",
+    "sections": "Batch sections",
+    "tab": {
+      "overview": "Overview",
+      "students": "Students",
+      "exams": "Exams",
+      "classes": "Classes"
+    },
+    "termBrief": "{batches} batches and {students} students this term.",
+    "termEnded": "Term has ended",
+    "termNotStarted": "Term hasn't started yet",
+    "termRunning": "Day {day} of {total}",
+    "topics": "Weak topics in this batch"
+  },
+  "calendar": {
+    "addEvent": "Add event",
+    "deleteTitle": "Delete this event?",
+    "editEvent": "Edit event",
+    "empty": "Nothing planned this day.",
+    "eventBatch": "For",
+    "eventDate": "Date",
+    "eventKind": "Type",
+    "eventTitle": "Title",
+    "kind": {
+      "event": "Event",
+      "holiday": "Holiday",
+      "exam": "Exam",
+      "class": "Class",
+      "fee": "Fees due"
+    },
+    "legend": "Colour and shape guide",
+    "next": "Next month",
+    "prev": "Previous month",
+    "open": "Open calendar",
+    "title": "Calendar",
+    "wholeCenter": "Whole center"
+  },
+  "examForm": {
+    "addTitle": "New exam",
+    "editTitle": "Edit exam",
+    "badMax": "Each maximum must be a number above 0",
+    "batch": "Batch",
+    "batchLocked": "The batch can't change after creating the exam.",
+    "date": "Date",
+    "deleteBody": "This deletes the exam and the marks of {n} student(s). This can't be undone.",
+    "deleteTitle": "Delete {name}?",
+    "keepMarks": "Marks for topics you keep are preserved; marks above a lowered maximum are cleared.",
+    "maxMarks": "Maximum marks",
+    "name": "Exam name",
+    "nameBn": "Name in Bangla (optional)",
+    "pickTopic": "Choose at least one topic",
+    "subject": "Subject",
+    "topics": "Topics covered",
+    "upcomingHint": "A future date shows as an upcoming exam on the calendar."
+  },
+  "fees": {
+    "badAmount": "Enter an amount from 0 to {max}",
+    "create": "Create {month} fees",
+    "due": "Amount due: {amount}",
+    "markPaid": "Mark fully paid",
+    "missing": "{n} fee record(s) for {month} haven't been created yet.",
+    "month": "Month",
+    "none": "No fee records for this month.",
+    "paidOn": "Paid on",
+    "record": "Record payment for {student}",
+    "recordTitle": "Payment · {student}",
+    "remind": "WhatsApp reminder for {student}",
+    "totalPaid": "Total paid so far (৳)"
+  },
+  "insight": {
+    "allGood": "Nothing needs attention right now.",
+    "attendance": "Attendance over the last 4 weeks is {pct}%.",
+    "attention": "{student}: {reasons}.",
+    "reteach": "{pct}% of this batch is weak in {topic}. Reteach this.",
+    "understanding": "Recent classes in {batch} were rated low on understanding (average {avg} of 5).",
+    "noMore": "No more findings."
+  },
+  "logClass": {
+    "attendance": "Attendance",
+    "attendanceHint": "Everyone starts as present. Tap a student to change: absent, then late.",
+    "batch": "Batch",
+    "counts": "{p} present · {l} late · {a} absent",
+    "cta": "Log a class",
+    "date": "Date",
+    "editTitle": "Edit class",
+    "high": "Understood well",
+    "homework": "Homework",
+    "low": "Struggled",
+    "noStudents": "This batch has no students yet.",
+    "notes": "Notes",
+    "pickTopic": "Choose at least one topic taught",
+    "title": "Log a class",
+    "topics": "Topics taught",
+    "understanding": "How well did they understand?",
+    "understandingN": "Understanding {n} out of 5",
+    "present": "Present",
+    "absent": "Absent",
+    "late": "Late"
+  },
+  "marks": {
+    "addExam": "New exam",
+    "autosave": "Marks save as you type.",
+    "average": "Average",
+    "back": "All exams",
+    "complete": "All marks entered",
+    "emptyBody": "Create an exam, choose the topics it covers, then enter each student's marks per topic.",
+    "gridCaption": "Marks by student and topic",
+    "gridHelp": "Tab moves right, Enter or the arrow keys move up and down. You can paste a block of marks from a spreadsheet.",
+    "highest": "Highest",
+    "lowest": "Lowest",
+    "missing": "{n} marks still to enter",
+    "next": "Next student",
+    "nextStudent": "Next student",
+    "noExams": "No exams yet.",
+    "noMarks": "No marks yet",
+    "noStudents": "This batch has no students yet. Add students first.",
+    "notFound": "This exam no longer exists.",
+    "outOf": "out of {n}",
+    "pasted": "Pasted {a} marks ({s} skipped: empty, not a number, or above the maximum).",
+    "prev": "Previous student",
+    "recentSection": "Recent exams",
+    "studentOf": "Student {i} of {total}",
+    "topicAverages": "Class average by topic",
+    "total": "Total",
+    "upcoming": "Upcoming",
+    "upcomingSection": "Upcoming exams"
+  },
+  "message": {
+    "batch": "Batch",
+    "body": "Message",
+    "note": "This is saved on this device and shows in the student's Inbox. To reach the guardian now, use WhatsApp.",
+    "previous": "Earlier messages",
+    "send": "Send in app",
+    "sent": "Saved to {student}'s inbox.",
+    "sentShort": "Sent",
+    "suggestions": "Message ideas",
+    "title": "Message {student}",
+    "to": "Message {student}",
+    "whatsapp": "Send via WhatsApp",
+    "chip": {
+      "general": "General",
+      "att": "Attendance",
+      "marks": "Marks"
+    },
+    "tpl": {
+      "general": "Hi {student}, a quick note from {batch}: ",
+      "attendance": "Hi {student}, we missed you in recent {batch} classes. Please try to attend regularly. If something is wrong, tell me and I'll help.",
+      "marks": "Hi {student}, your recent {batch} marks dipped a little. Let's work on the weak topics together. Come to the next class with your questions."
+    }
+  },
+  "stats": {
+    "attendanceNote": "The line marks the 75% level. Last 4 weeks.",
+    "attendanceShort": "Attendance {pct}",
+    "classesCount": "{a} of {t} classes attended",
+    "lowestAttendance": "Lowest attendance",
+    "none": "No batches yet.",
+    "strongest": "Strongest topics",
+    "title": "Details",
+    "weakest": "Weakest topics"
+  },
+  "studentForm": {
+    "badPhone": "Enter a valid phone number",
+    "batches": "Batches",
+    "class": "Class",
+    "deleteBody": "This deletes the student's marks, attendance, fees, goals and plan. This can't be undone.",
+    "deleteTitle": "Delete {name}?",
+    "editTitle": "Edit student",
+    "guardian": "Guardian name",
+    "name": "Student name",
+    "nameBn": "Name in Bangla (optional)",
+    "phone": "Guardian phone",
+    "phoneHint": "Used only to open WhatsApp. It is never sent to AI.",
+    "pickBatch": "Choose at least one batch"
+  },
+  "subjects": {
+    "addSubject": "Add subject",
+    "addTopic": "Add topic",
+    "deleteBody": "This removes the subject, its topics and {n} exam(s). This can't be undone.",
+    "topicBody": "The topic is removed from {n} exam(s) and from logged classes. This can't be undone.",
+    "deleteSubject": "Delete subject {name}?",
+    "deleteTopic": "Delete topic {name}",
+    "deleteTopicTitle": "Delete topic {name}?",
+    "hint": "Names show in English or Bangla depending on the app language. Changes save as you type.",
+    "manage": "Manage subjects & topics",
+    "nameBn": "Bangla name",
+    "nameEn": "English name",
+    "title": "Subjects & topics"
+  },
+  "termForm": {
+    "addTitle": "New term",
+    "deleteBody": "Batches in this term move to another term. This can't be undone.",
+    "deleteTitle": "Delete {name}?",
+    "editTitle": "Edit term",
+    "end": "End date",
+    "endBeforeStart": "End date must be after the start date",
+    "makeCurrent": "Make this the current term",
+    "name": "Term name",
+    "nameBn": "Name in Bangla (optional)",
+    "start": "Start date",
+    "switch": "Current term"
+  },
+  "insights": {
+    "mapCaption": "Weak-topic map: mastery by student and topic",
+    "mapEmpty": "No students study this subject in the chosen batches.",
+    "mapHint": "Each square is one student's mastery in a topic: weakest students first. The bottom row shows the share of the class that is weak in each topic.",
+    "mapRedShare": "% weak",
+    "mapSubject": "Subject",
+    "mapTitle": "Weak-topic map",
+    "mapSwipe": "Swipe sideways to see every topic →"
+  },
+  "goalStatus": {
+    "on_track": "On track",
+    "needs_work": "Needs work",
+    "no_data": "No data yet"
+  },
+  "studentDetail": {
+    "attendanceByBatch": "Attendance by batch",
+    "fees": "Fees",
+    "feesClear": "All fees paid",
+    "feesOpen": "Still to pay",
+    "feesOwed": "Fees owed",
+    "goal": "Goal",
+    "guardianLine": "Guardian: {name} · {phone}",
+    "insight": "What stands out",
+    "last8w": "Last 8 weeks",
+    "map": "Topic by topic",
+    "message": "Message",
+    "nextSteps": "Next steps",
+    "noGoal": "No goal set",
+    "noTopics": "No topics for this subject.",
+    "none": "Nothing yet.",
+    "notFound": "This student no longer exists.",
+    "note": "Everything here is calculated from this student's marks, attendance and fees. A parent report arrives in a later step.",
+    "openFees": "Open all fees",
+    "step": {
+      "attendance": "Attendance is {pct}%: encourage regular attendance.",
+      "goal": "The {subject} goal needs more work: start with the weak topics.",
+      "practice": "Practise {topic}: it is one of the weakest areas.",
+      "protect": "Keep {topic} strong with a quick weekly review."
+    },
+    "strengths": "Strengths",
+    "subject": "Subject",
+    "trend": "Marks trend",
+    "trendNeed": "Needs at least two exams with marks.",
+    "weakSpots": "Weak spots",
+    "whatsapp": "WhatsApp guardian"
+  },
+  "goalForm": {
+    "badPercent": "Enter a number from 1 to 100",
+    "by": "Reach it by (optional)",
+    "deleteBody": "The goal is removed. You can set a new one any time.",
+    "deleteTitle": "Remove the {subject} goal?",
+    "equals": "That is grade {grade}",
+    "note": "Goals are guidance, not a promise of a grade.",
+    "percent": "Target (%)",
+    "quick": "Quick picks",
+    "title": "Goal for {subject}"
+  },
+  "profile": {
+    "batches": "Batches",
+    "center": "Coaching center",
+    "centerBn": "Center name (Bangla)",
+    "centerEn": "Center name (English)",
+    "counts": "{b} batches · {s} students",
+    "desc": "Who is using Aster, plus language, theme and your data.",
+    "editTitle": "Edit teacher profile",
+    "eyebrow": "Profile & settings",
+    "grading": "Grade display",
+    "gradingGpa": "GPA 5.0",
+    "gradingHint": "How goals are shown. The default grade table is an example: check it against the current board scale.",
+    "gradingLetter": "Letter",
+    "gradingPercent": "Percent",
+    "guardian": "Guardian",
+    "nameBn": "Name (Bangla)",
+    "nameEn": "Name (English)",
+    "phone": "Phone",
+    "preferences": "Preferences",
+    "professionBn": "Profession (Bangla)",
+    "professionEn": "Profession (English)",
+    "student": "Student",
+    "subjects": "Subjects studying",
+    "teacher": "Teacher",
+    "teaching": "Teaching",
+    "studentEditNote": "You can change your name and your guardian's contact. Your teacher manages your batches.",
+    "reminder": {
+      "title": "Fee reminder wording",
+      "desc": "Used when you tap the reminder button on the Fees page. Fill-in words: {student} {amount} {month} {center}.",
+      "en": "English wording",
+      "bn": "Bangla wording",
+      "insert": "Insert",
+      "preview": "Preview",
+      "reset": "Reset to default",
+      "unknown": "Unknown word: {names}. Use only {student}, {amount}, {month} and {center}."
+    },
+    "reportNote": {
+      "title": "Default note on parent reports",
+      "hint": "Pre-fills the note box each time you make a report."
+    },
+    "seePlans": "See the planned plans and prices",
+    "homePage": "Home page",
+    "signOut": "Sign out",
+    "signOutHint": "Return to the home page and choose a role again. Your data stays on this device."
+  },
+  "taskForm": {
+    "addTitle": "Add my own task",
+    "badMinutes": "Enter minutes from 1 to 240",
+    "date": "Day",
+    "deleteTitle": "Delete this task?",
+    "editTitle": "Edit task",
+    "minutes": "Minutes",
+    "noTopic": "No topic",
+    "perDay": "Your daily study time is {n} minutes.",
+    "plannedNote": "This task was planned for you. You can change the day and minutes.",
+    "title": "What will you do?",
+    "titleHint": "e.g. Read chapter 5",
+    "topic": "Topic (optional)"
+  },
+  "welcome": {
+    "continueStudent": "Continue as student",
+    "continueTeacher": "Continue as teacher",
+    "note": "This is a demo with sample data. You are choosing who to try; there is no sign-in yet. You can switch any time from the top bar, and your changes stay on this device.",
+    "pick": "Pick who you want to try. You'll see the same sample school from both sides.",
+    "s1": "See your plan, streak and tips",
+    "s2": "Set goals for every subject",
+    "s3": "Read messages from your teacher",
+    "student": "I'm a student",
+    "t1": "Log classes and marks in seconds",
+    "t2": "See weak topics and who needs help",
+    "t3": "Track fees and message students",
+    "teacher": "I'm a teacher",
+    "title": "Welcome to Aster"
+  },
+  "report": {
+    "title": "Parent report",
+    "language": "Report language",
+    "month": "Month",
+    "includeMarks": "Include marks",
+    "includeFees": "Include fees",
+    "teacherNote": "Your note to the parent",
+    "noteHint": "Optional. It appears at the end.",
+    "copy": "Copy text",
+    "copied": "Copied!",
+    "whatsapp": "Share on WhatsApp",
+    "preview": "Preview",
+    "mine": "My report",
+    "mineHint": "This is what your parent would see.",
+    "privacy": "Only this student's own information is included. Nothing is sent anywhere until you tap Share.",
+    "open": "Parent report",
+    "text": {
+      "title": "Progress report · {month}",
+      "marks": "MARKS",
+      "strong": "Strong: {topics}",
+      "weak": "Needs work: {topics}",
+      "attendance": "ATTENDANCE",
+      "attendanceLine": "{pct}% this month ({a} of {total} classes)",
+      "fees": "FEES",
+      "feeLine": "{paid} of {due} paid ({status})",
+      "suggestion": "SUGGESTION",
+      "note": "NOTE FROM TEACHER"
+    },
+    "suggest": {
+      "practice": "Please help {name} practise {topic} this week: it is one of the weaker areas.",
+      "attendance": "{name}'s attendance is {pct}%. Regular attendance will help a lot.",
+      "goal": "{name} is working toward a goal in {subject}. A little extra focus on the weak topics will help.",
+      "protect": "{name} is strong in {topic}. A short weekly review will keep it that way."
+    }
+  },
+  "feedback": {
+    "title": "Demo feedback",
+    "desc": "What tutors tapped on this device. Export it to collect results from each tutor's phone.",
+    "empty": "Nothing yet. Tap a locked Premium card to try it.",
+    "feature": "Feature",
+    "views": "Viewed",
+    "notify": "Notify me",
+    "wouldPay": "Would pay",
+    "prices": "Prices chosen: {list}",
+    "exportJson": "Export JSON",
+    "exportCsv": "Export CSV",
+    "clear": "Clear",
+    "clearTitle": "Clear all feedback?",
+    "clearBody": "This removes the taps recorded on this device. It cannot be undone."
+  },
+  "plans": {
+    "eyebrow": "Planned plans",
+    "title": "Plans",
+    "desc": "Planned pricing: not final, and nothing can be bought yet.",
+    "planned": "Planned",
+    "free": "Free",
+    "freeFor": "for solo tutors · up to {max} students",
+    "free1": "Up to {max} students",
+    "free2": "A few AI insights each month",
+    "free3": "Basic parent reports",
+    "freeNote": "In this demo every feature except the locked ones is available.",
+    "pro": "Tutor Pro",
+    "pro1": "Unlimited AI insights",
+    "pro2": "Practice questions and early-warning alerts",
+    "pro3": "Exam paper builder and branded PDFs",
+    "pro4": "Lecture recorder",
+    "center": "Center",
+    "center1": "Everything in Tutor Pro",
+    "center2": "Several teachers, each with their own batches",
+    "center3": "Center dashboard and cloud sync",
+    "center4": "Branded parent portal",
+    "ask": "Tell us what you'd pay",
+    "annual": "Annual plans are planned too: about two months free.",
+    "note": "These prices are only a guess, shown to learn what feels fair. You will not be charged and no payment details are asked for.",
+    "centerFor": "up to {max} students",
+    "school": "Aster for Schools",
+    "soon": "Coming soon",
+    "schoolAsk": "I want this for my school",
+    "schoolBody": "For schools with {min}+ students: classes and sections, many teachers, and a principal dashboard. Not built yet; tell us if you would use it."
+  },
+  "premium": {
+    "badge": "Premium",
+    "seePlans": "See plans",
+    "perMonth": "/ month",
+    "none": "Not at this price",
+    "sampleLabel": "Example preview",
+    "comingSoon": "Coming soon: not available yet. Nothing is charged and no payment details are asked for.",
+    "notify": "Notify me when ready",
+    "notified": "We'll let you know",
+    "notifiedNote": "Thanks! We'll let you know when it's ready.",
+    "wouldPay": "I'd pay for this",
+    "priceTitle": "What would feel fair per month?",
+    "send": "Send my answer",
+    "thanks": "Thank you! Your answer helps decide what to build first.",
+    "sample": {
+      "recorder": "Today we solved quadratic equations by factorisation…",
+      "question": "Solve x² − 5x + 6 = 0",
+      "alert1": "Tanvir: attendance is dropping",
+      "alert2": "Maliha: marks fell in 2 tests",
+      "paper1": "Quadratic Equations · 10 marks",
+      "paper2": "Trigonometry · 10 marks",
+      "paper3": "Circles · 10 marks",
+      "synced": "Synced",
+      "phone": "Phone",
+      "pc": "PC",
+      "plan": "A bundle of the tools above, with your own logo and colours on reports.",
+      "teacher1": "Karim Sir: students improve most after revision classes. Plan one before the next test.",
+      "teacher2": "Nasrin Madam: attendance dipped this month. Check in with her batch."
+    },
+    "f": {
+      "recorder": {
+        "title": "Lecture recorder",
+        "benefit": "Record the class and get a written summary ready to post to the class group.",
+        "b1": "Live English or Bangla transcription",
+        "b2": "AI overview of the day's lesson",
+        "b3": "One tap to share with students"
+      },
+      "practice": {
+        "title": "AI practice questions",
+        "benefit": "Questions with answers and explanations on each student's weak topics.",
+        "b1": "Made from the topics marked red",
+        "b2": "Step-by-step explanations",
+        "b3": "Easy, medium and hard levels"
+      },
+      "alerts": {
+        "title": "Early-warning alerts",
+        "benefit": "Get told when marks or attendance start slipping, before the exam.",
+        "b1": "Automatic checks every week",
+        "b2": "A short list of who needs help",
+        "b3": "Optional message to the guardian"
+      },
+      "pdf": {
+        "title": "Branded PDF reports & parent portal",
+        "benefit": "Polished reports with your logo and colours, plus a link parents can open.",
+        "b1": "Your center's logo and colours",
+        "b2": "One-tap PDF to print or send",
+        "b3": "A private link for each parent"
+      },
+      "paper": {
+        "title": "Exam paper builder",
+        "benefit": "Build a balanced test from the topics you have taught.",
+        "b1": "Pick topics and marks",
+        "b2": "A balanced mix of easy and hard",
+        "b3": "Answer key included"
+      },
+      "center": {
+        "title": "Center dashboard",
+        "benefit": "See every batch and teacher side by side, and export to Excel or PDF.",
+        "b1": "Compare batches",
+        "b2": "Several teachers in one center",
+        "b3": "Export to Excel or PDF"
+      },
+      "sync": {
+        "title": "Cloud sync & backup",
+        "benefit": "Your data on every device, and nothing lost if a phone breaks.",
+        "b1": "Use Aster on phone and PC together",
+        "b2": "Automatic backups",
+        "b3": "Students and parents can log in"
+      },
+      "planPro": {
+        "title": "Tutor Pro plan",
+        "benefit": "Unlimited AI plus practice questions, alerts, the paper builder, branded PDFs and the lecture recorder.",
+        "b1": "Unlimited AI insights",
+        "b2": "All premium tools for one teacher",
+        "b3": "Built for independent tutors"
+      },
+      "planCenter": {
+        "title": "Center plan",
+        "benefit": "Everything in Pro plus several teachers, a center dashboard, cloud sync and a branded parent portal.",
+        "b1": "Several teachers",
+        "b2": "Center dashboard and sync",
+        "b3": "Branded parent portal"
+      },
+      "school": {
+        "title": "Aster for Schools",
+        "benefit": "Classes and sections, many teachers and one principal dashboard for the whole school.",
+        "b1": "Classes and sections",
+        "b2": "Many teachers, each with their own classes",
+        "b3": "Principal dashboard for the whole school"
+      },
+      "teacherAi": {
+        "title": "AI insights for each teacher",
+        "benefit": "AI keeps track of every teacher and tells you what is working and where to help.",
+        "b1": "What each teacher teaches and how it is going",
+        "b2": "Plain-language tips for the owner",
+        "b3": "Compare batches fairly"
+      }
+    }
+  },
+  "ai": {
+    "title": "AI insight",
+    "privacy": "Only topic names and percentages are sent. Never names, phone numbers or batch names.",
+    "usage": "{used} of {limit} free AI insights used this month",
+    "setupBody": "Add your own Gemini key in Profile to turn on AI insights. It is optional; everything else works without it.",
+    "setupLink": "Open AI settings",
+    "generate": "Generate AI insight",
+    "regenerate": "Generate again",
+    "loading": "Thinking…",
+    "saved": "Saved answer on this device. No free insight used.",
+    "noData": "Not enough marks yet for an AI insight.",
+    "reteach": "Reteach first",
+    "students": "Needs attention",
+    "actions": "Suggested actions",
+    "strengths": "Strengths",
+    "weak": "Practise next",
+    "nextSteps": "Next steps",
+    "limit": {
+      "title": "Free plan limit reached",
+      "body": "The free plan includes {limit} AI insights a month. Unlimited insights are planned for Tutor Pro. For this demo you can still generate one.",
+      "anyway": "Generate anyway (demo)"
+    },
+    "err": {
+      "offline": "You are offline. Connect to the internet and try again.",
+      "invalid_key": "AI insights are not available right now. Everything else still works.",
+      "model": "AI insights are not available right now. Everything else still works.",
+      "rate_limited": "The free AI quota is used up for now. Try again in a minute, or tomorrow.",
+      "blocked": "Google's safety filter blocked this answer. Try again.",
+      "bad_response": "The AI sent back something unreadable. Try again.",
+      "server": "Google's service had a problem. Try again shortly.",
+      "timeout": "It took too long. Try again.",
+      "network": "Could not reach Google. Check your connection.",
+      "privacy": "Stopped: personal details were found in the request, so nothing was sent."
+    },
+    "settings": {
+      "title": "AI insights (teacher only)",
+      "desc": "Optional. Uses your own free Google Gemini key. Students and parents never use AI.",
+      "key": "Gemini API key",
+      "keyHint": "Stored only on this device and never included in backups.",
+      "show": "Show",
+      "hide": "Hide",
+      "model": "Model",
+      "modelHint": "Leave as is unless Google renames the model.",
+      "enable": "Turn on AI insights",
+      "enableHint": "You will be asked to confirm what is shared.",
+      "test": "Test connection",
+      "testing": "Testing…",
+      "testOk": "Connected",
+      "removeKey": "Remove key",
+      "restrict": "Tip: in Google AI Studio, restrict the key to this site and to the Gemini API only.",
+      "local": "Saved answers stay on this device.",
+      "clearSaved": "Clear saved answers",
+      "withdraw": "Withdraw consent"
+    },
+    "consent": {
+      "title": "Before you turn on AI",
+      "sent": "What is sent to Google: topic names, mastery percentages, trends, attendance, goals and study time. Students appear only as letters (A, B…).",
+      "never": "What is never sent: student, guardian, teacher or center names, phone numbers, batch names, or fee details.",
+      "google": "Free-tier requests may be used by Google to improve its products. Paid tiers are not.",
+      "minors": "Google's free tier says it is for adults. The data here is about students, so be sure you are comfortable with that.",
+      "agree": "I understand, turn on"
+    },
+    "soon": "AI insights are coming soon. Teachers will not need their own key: it will just work. Everything else in Aster works without it."
+  },
+  "center": {
+    "eyebrow": "Owner overview",
+    "title": "Teachers",
+    "open": "Teachers overview",
+    "addTeacher": "Add teacher",
+    "teachers": "Teachers",
+    "attention": "Need attention",
+    "sizeTitle": "Your size",
+    "sizeOf": "{n} of {max} students",
+    "sizeSchool": "{n} students: bigger than a Center plan. Schools are coming.",
+    "tier": {
+      "solo": "Solo",
+      "center": "Center",
+      "school": "School"
+    },
+    "noBatches": "No batches yet. Assign one when you edit a batch.",
+    "needAttention": "{n} need attention",
+    "weakest": "Weakest: {topic}",
+    "unassigned": "Batches without a teacher",
+    "unassignedHint": "Open a batch and pick a teacher to place it here.",
+    "teachersSub": "Who teaches what, and how their students are doing.",
+    "teachingNow": "Teaching now",
+    "taughtSoFar": "Taught so far",
+    "classesLogged": "{n} classes logged",
+    "lastClass": "last on {date}",
+    "statsTitle": "Teacher stats",
+    "statsHint": "A simple picture of each teacher, from the classes and marks you already log.",
+    "statsLine": "{batches} batches · {students} students · {classes} classes"
+  },
+  "teacherForm": {
+    "addTitle": "Add a teacher",
+    "editTitle": "Edit teacher",
+    "name": "Name",
+    "nameBn": "Name in Bangla (optional)",
+    "phone": "Phone (optional)",
+    "deleteTitle": "Remove {name}?",
+    "deleteBody": "Their batches and students stay. The batches just have no teacher until you assign one.",
+    "salary": "Monthly salary in taka (optional)",
+    "salaryHint": "Only used if you turn on salary tracking on the Fees page."
+  },
+  "tiers": {
+    "free": "Free",
+    "popular": "Most popular",
+    "upTo": "Up to {max} students",
+    "over": "More than {max} students",
+    "solo": {
+      "name": "Solo",
+      "for": "One teacher running a class or a center",
+      "i1": "Batches, marks, attendance and fees",
+      "i2": "Weak-topic map and study plans",
+      "i3": "Parent reports on WhatsApp",
+      "i4": "Works offline, in English and বাংলা",
+      "cta": "Start free",
+      "ask": "Included free"
+    },
+    "plus": {
+      "name": "Plus",
+      "for": "Coaching centers with several teachers",
+      "i1": "Everything in Solo",
+      "i2": "Several teachers, each with their own batches",
+      "i3": "Owner overview of every teacher",
+      "i4": "Unlimited AI insights",
+      "cta": "Try Plus",
+      "ask": "Tell us what you'd pay"
+    },
+    "pro": {
+      "name": "Pro",
+      "for": "Schools with many classes and teachers",
+      "i1": "Everything in Plus",
+      "i2": "Classes, sections and many teachers",
+      "i3": "Principal dashboard for the whole school",
+      "i4": "Priority support",
+      "cta": "See Pro",
+      "ask": "I want this for my school"
+    }
+  },
+  "landing": {
+    "navLabel": "Sections",
+    "nav": {
+      "how": "How it works",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "about": "What is Aster"
+    },
+    "openApp": "Open app",
+    "signIn": "Sign in",
+    "sub": "See which students and topics need attention, plan the next class, and keep parents in the loop. For tutors, coaching centers and schools, in English and বাংলা.",
+    "entry": {
+      "teacher": "I am a teacher",
+      "teacherBody": "Run my own classes",
+      "center": "I run a center",
+      "centerBody": "Several teachers, one view",
+      "student": "I am a student",
+      "studentBody": "See my plan and goals"
+    },
+    "trust": {
+      "t1": "Works offline",
+      "t2": "Data stays on your device",
+      "t3": "Free to start"
+    },
+    "preview": {
+      "title": "Class insight",
+      "sub": "Class 10 Mathematics",
+      "tip": "58% are weak in Quadratic Equations. Reteach this."
+    },
+    "how": {
+      "title": "How it works",
+      "s1": "Add marks",
+      "s1b": "Log a class or a test in seconds. Aster does the maths.",
+      "s2": "See what is weak",
+      "s2b": "A colour map shows which topics and which students need help first.",
+      "s3": "Act on it",
+      "s3b": "Plan a revision class, send a study plan or a report to parents."
+    },
+    "pricing": {
+      "title": "Simple plans",
+      "sub": "Start free as a solo teacher. Grow into a center or a school when you need more teachers.",
+      "note": "Demo prices in taka, per month. Nothing can be bought yet and no payment details are asked for."
+    },
+    "why": {
+      "title": "Why Aster",
+      "w1": "Works offline",
+      "w1b": "Install it on a phone or PC. Marks and plans work without internet.",
+      "w2": "English and বাংলা",
+      "w2b": "Switch any time. Students get plain, friendly wording.",
+      "w3": "Private by design",
+      "w3b": "Data stays on your device. Optional AI only sees topics and percentages, never names.",
+      "w4": "Built for tutoring",
+      "w4b": "Topics, batches, fees and WhatsApp reminders, not a heavy school system."
+    },
+    "faq": {
+      "title": "Questions",
+      "q1": "Is my data safe?",
+      "q1a": "In this demo everything is stored only in your own browser. Nothing is uploaded. Use Export in Profile to keep a backup.",
+      "q2": "What does it cost?",
+      "q2a": "Solo is free for up to 60 students. Plus and Pro are planned, and the prices shown are demo prices.",
+      "q3": "Does it work without internet?",
+      "q3a": "Yes. Once opened, the app and your data work offline. Only the optional AI needs internet.",
+      "q4": "Does it use AI?",
+      "q4a": "Only if you turn it on. Anonymised topic data is sent, never student names or phone numbers.",
+      "q5": "Do students need an account?",
+      "q5a": "Not in the demo. Later, students will join a class with a code from their teacher."
+    },
+    "footer": "Demo version with sample data.",
+    "about": {
+      "title": "What is Aster?",
+      "body": "Aster is a simple app that shows tutors, centers and schools which students and topics need help, so every class is spent on what matters. It works on any phone or PC, even offline.",
+      "aiTitle": "Helped by AI",
+      "ai": "Optional AI will write a short summary of how a class or a student is doing and suggest what to do next. It only sees topics and percentages, never names or phone numbers. Coming soon.",
+      "teachers": {
+        "title": "For teachers",
+        "b1": "See weak topics and who needs attention, without any spreadsheets",
+        "b2": "Log classes, marks and fees in seconds",
+        "b3": "Send parents a clear report or a fee reminder on WhatsApp"
+      },
+      "students": {
+        "title": "For students",
+        "b1": "Get a short daily plan built from your own weak topics",
+        "b2": "Set goals for every subject and watch your streak grow",
+        "b3": "Read messages from your teacher in one place"
+      }
+    }
+  },
+  "signin": {
+    "id": "Email or phone",
+    "idHint": "Accounts are coming soon",
+    "password": "Password",
+    "code": "Join code (optional)",
+    "codeHint": "Your teacher gives you a code to join a class. Codes work once accounts launch.",
+    "note": "Demo: there are no accounts yet, so the fields above are switched off. Never type a real password here.",
+    "demo": "Continue with the demo",
+    "demoHint": "Opens the sample school. Nothing is saved anywhere except this device.",
+    "other": "Other ways in",
+    "teacher": {
+      "title": "Teacher sign in",
+      "body": "Run your classes, marks and fees."
+    },
+    "center": {
+      "title": "Center sign in",
+      "body": "See every teacher and batch in one place.",
+      "invite": "Later you will invite teachers to your center with a code."
+    },
+    "student": {
+      "title": "Student sign in",
+      "body": "See your plan, topics and goals. Until a teacher adds you, you get a basic dashboard."
+    },
+    "as": {
+      "teacher": "Sign in as a teacher",
+      "center": "Sign in as a center",
+      "student": "Sign in as a student"
+    }
+  },
+  "situation": {
+    "good": "Doing well",
+    "ok": "Getting there",
+    "help": "Needs help",
+    "none": "Not enough data"
+  },
+  "situationText": {
+    "good": "Most students are on track and coming to class. Keep it up.",
+    "ok": "Progress is fine but some topics or students need a little more attention.",
+    "help": "Many students are struggling or missing classes. A revision class or a talk with the teacher would help.",
+    "none": "There are not enough marks yet to say how it is going."
+  },
+  "batchTeacher": {
+    "title": "Teacher and performance",
+    "none": "No teacher assigned yet"
+  },
+  "salary": {
+    "title": "Track teacher salaries",
+    "hint": "Optional. Turn on to note what you pay each teacher every month. Turn off any time.",
+    "summary": "{paid} paid of {total}",
+    "left": "{amount} left",
+    "notSet": "No salary set",
+    "paidOn": "paid on {date}",
+    "paid": "Paid",
+    "due": "Due",
+    "set": "Set salary",
+    "undo": "Undo",
+    "markPaid": "Mark paid",
+    "setHint": "Change a salary by editing the teacher on the Batches page."
+  }
+}
