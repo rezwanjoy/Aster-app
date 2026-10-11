@@ -1,12 +1,13 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useI18n, type TKey } from '@/i18n';
 import { Button, Card, Chip } from '@/components/ui';
 import { IconSparkle } from '@/components/icons';
-import { buildBatchInput, buildStudentInput } from '@/lib/ai/anonymize';
+import { buildBatchInput, buildStudentInput, type TopicRef } from '@/lib/ai/anonymize';
 import { batchPrompt, studentPrompt } from '@/lib/ai/prompts';
 import { parseBatchResult, parseStudentResult, topicNameOf, type BatchAiResult, type StudentAiResult } from '@/lib/ai/schemas';
 import { useAppData } from '@/store/hooks';
 import { useSettings } from '@/store/settings';
+import { basicBatch, basicStudent } from './basic';
 import { useAi, type AiState } from './useAi';
 
 type Ai = ReturnType<typeof useAi<never>>;
@@ -17,6 +18,7 @@ function Shell({ ai, children, footer }: { ai: Omit<Ai, 'state'> & { state: AiSt
   const mode = useSettings((s) => s.mode);
   const { state, ready, consent, limited, used, freeLimit } = ai;
   if (mode === 'student') return null;
+  const calculated = state.status === 'done' && state.source === 'basic';
 
   return (
     <Card className="space-y-4">
@@ -24,8 +26,8 @@ function Shell({ ai, children, footer }: { ai: Omit<Ai, 'state'> & { state: AiSt
         <div className="flex items-start gap-3">
           <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-gold-soft text-gold"><IconSparkle width={20} height={20} /></span>
           <div>
-            <h2 className="font-display text-lg font-semibold tracking-[-0.015em]">{t('ai.title')}</h2>
-            <p className="text-xs text-muted">{t('ai.privacy')}</p>
+            <h2 className="font-display text-lg font-semibold tracking-[-0.015em]">{calculated ? t('ai.titleBasic') : t('ai.title')}</h2>
+            <p className="text-xs text-muted">{calculated ? t('ai.basicNote') : t('ai.privacy')}</p>
           </div>
         </div>
         <Chip tone="muted">{t('ai.usage', { used: n(used), limit: n(freeLimit) })}</Chip>
@@ -43,7 +45,7 @@ function Shell({ ai, children, footer }: { ai: Omit<Ai, 'state'> & { state: AiSt
         <>
           <div aria-live="polite" className="space-y-4">
             {state.status === 'done' && children}
-            {state.status === 'done' && state.cached && <p className="text-xs text-muted">{t('ai.saved')}</p>}
+            {state.status === 'done' && state.cached && state.source === 'ai' && <p className="text-xs text-muted">{t('ai.saved')}</p>}
           </div>
           {state.status === 'loading' && <p role="status" className="animate-pulse text-sm text-muted">{t('ai.loading')}</p>}
           {state.status === 'error' && <p role="alert" className="rounded-2xl border border-line bg-surface-2 p-3 text-sm text-red-fg">{t(`ai.err.${state.code}` as TKey)}</p>}
@@ -67,11 +69,8 @@ function Actions({ ai, label }: { ai: ReturnType<typeof useAi<never>>; label: st
   const done = ai.state.status === 'done';
   return (
     <div className="flex flex-wrap gap-2">
-      {!ai.limited || done ? (
-        <Button disabled={busy} onClick={() => ai.generate()}>{done ? t('ai.regenerate') : label}</Button>
-      ) : (
-        <Button variant="secondary" disabled={busy} onClick={() => ai.generate({ force: true })}>{t('ai.limit.anyway')}</Button>
-      )}
+      <Button disabled={busy} onClick={() => ai.generate()}>{done ? t('ai.regenerate') : label}</Button>
+      {ai.limited && <Button variant="secondary" disabled={busy} onClick={() => ai.generate({ force: true })}>{t('ai.limit.anyway')}</Button>}
     </div>
   );
 }
@@ -83,12 +82,16 @@ const Label = ({ children }: { children: React.ReactNode }) => <p className="mb-
 
 /** AI insight for a class or for everything in the current batch filter. */
 export function BatchAiCard({ batchIds, today }: { batchIds: string[]; today: string }) {
-  const { t, lang } = useI18n();
+  const { t, n, lang } = useI18n();
   const data = useAppData();
+  const localTopic = useCallback((refs: TopicRef[], c: string) => {
+    const en = topicNameOf(refs, c);
+    return data.topics.find((x) => x.name.en === en)?.name[lang] ?? en ?? c;
+  }, [data.topics, lang]);
   const input = useMemo(() => buildBatchInput(data, batchIds, { today }), [data, batchIds, today]);
   const request = useMemo(
-    () => (input.payload.topics.length ? { kind: 'batch' as const, payload: input.payload, spec: batchPrompt(input.payload, lang), accept: (raw: unknown) => parseBatchResult(raw, input.payload) } : null),
-    [input, lang],
+    () => (input.payload.topics.length ? { kind: 'batch' as const, payload: input.payload, spec: batchPrompt(input.payload, lang), accept: (raw: unknown) => parseBatchResult(raw, input.payload), basic: () => basicBatch(input.payload, t, n, (c) => localTopic(input.topicRefs, c)) } : null),
+    [input, lang, t, n, localTopic],
   );
   const ai = useAi<BatchAiResult>(request);
   const r = ai.state.status === 'done' ? ai.state.result : null;
@@ -123,12 +126,16 @@ export function BatchAiCard({ batchIds, today }: { batchIds: string[]; today: st
 
 /** AI insight for one student, written for the teacher to share. */
 export function StudentAiCard({ studentId, subjectId, today }: { studentId: string; subjectId?: string; today: string }) {
-  const { t, lang } = useI18n();
+  const { t, n, lang } = useI18n();
   const data = useAppData();
+  const localTopic = useCallback((refs: TopicRef[], c: string) => {
+    const en = topicNameOf(refs, c);
+    return data.topics.find((x) => x.name.en === en)?.name[lang] ?? en ?? c;
+  }, [data.topics, lang]);
   const input = useMemo(() => buildStudentInput(data, studentId, { today }, { subjectId }), [data, studentId, subjectId, today]);
   const request = useMemo(
-    () => (input.topicRefs.length ? { kind: 'student' as const, payload: input.payload, spec: studentPrompt(input.payload, lang), accept: (raw: unknown) => parseStudentResult(raw, input.payload) } : null),
-    [input, lang],
+    () => (input.topicRefs.length ? { kind: 'student' as const, payload: input.payload, spec: studentPrompt(input.payload, lang), accept: (raw: unknown) => parseStudentResult(raw, input.payload), basic: () => basicStudent(input.payload, t, n, (c) => localTopic(input.topicRefs, c)) } : null),
+    [input, lang, t, n, localTopic],
   );
   const ai = useAi<StudentAiResult>(request);
   const r = ai.state.status === 'done' ? ai.state.result : null;

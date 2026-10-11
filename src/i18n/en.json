@@ -1011,7 +1011,27 @@
       "google": "Google's free tier may use requests to improve its products and is meant for adults.",
       "agree": "I understand"
     },
-    "soon": "AI insights are coming soon. Teachers will not need their own key: it will just work. Everything else in Aster works without it."
+    "soon": "AI insights are coming soon. Teachers will not need their own key: it will just work. Everything else in Aster works without it.",
+    "titleBasic": "Class insight",
+    "basicNote": "Calculated from your marks and attendance.",
+    "basic": {
+      "overview": "{students} students, with {pct}% attendance over the last 4 weeks.",
+      "overviewNoAtt": "{students} students in this view.",
+      "weak": "{pct}% of students are weak in {topic}, so that is the first topic to look at.",
+      "noneWeak": "No topic is weak for many students right now.",
+      "understanding": "Recent classes were rated low on understanding (average {avg} of 5).",
+      "actReteach": "Reteach {topic} in your next class.",
+      "actCheck": "Check in with the {n} students listed above.",
+      "actAttendance": "Attendance is {pct}%. Follow up on absences.",
+      "needs": "Needs support: {reasons}.",
+      "strong": "Mastery {pct}%.",
+      "needsWork": "Mastery {pct}%, needs practice.",
+      "practise": "Practise {topic} a little on each study day.",
+      "stepAttendance": "Attendance is {pct}%. Try not to miss classes.",
+      "stepGoal": "{subject}: the goal is {target}% and you are at {current}%. Keep going.",
+      "stepKeep": "Keep revising {topic} so it stays strong.",
+      "encourage": "Small, steady steps add up. You can do this."
+    }
   },
   "center": {
     "eyebrow": "Owner overview",

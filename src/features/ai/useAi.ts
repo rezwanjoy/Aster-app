@@ -12,7 +12,7 @@ import { useSettings } from '@/store/settings';
 export type AiState<T> =
   | { status: 'idle' }
   | { status: 'loading' }
-  | { status: 'done'; result: T; cached: boolean }
+  | { status: 'done'; result: T; cached: boolean; source: 'ai' | 'basic' }
   | { status: 'error'; code: AiErrorCode };
 
 interface Request<T> {
@@ -20,6 +20,8 @@ interface Request<T> {
   payload: unknown;
   spec: PromptSpec;
   accept: (raw: unknown) => T | null;
+  /** the calculated insight, used when the free AI insights are used up or Google cannot answer */
+  basic?: () => T;
 }
 
 /**
@@ -53,8 +55,9 @@ export function useAi<T>(request: Request<T> | null) {
       if (!request || !key || !useSettings.getState().ai.consented) return;
       const id = ++run.current;
       const hit = getCached<T>({ entries: useAiCache.getState().entries, order: useAiCache.getState().order }, key);
-      if (hit) return setState({ status: 'done', result: hit.result, cached: true });
-      if (!opts.force && overFreeLimit(useSettings.getState().ai.usage)) return;
+      if (hit) return setState({ status: 'done', result: hit.result, cached: true, source: 'ai' });
+      const showBasic = () => request.basic && setState({ status: 'done', result: request.basic(), cached: false, source: 'basic' });
+      if (!opts.force && overFreeLimit(useSettings.getState().ai.usage) && request.basic) return showBasic();
 
       // defensive: nothing personal may leave the device, even by accident
       const text = request.spec.user + request.spec.system;
@@ -66,15 +69,17 @@ export function useAi<T>(request: Request<T> | null) {
         if (id !== run.current) return;
         useAiCache.getState().put(key, result);
         patchSettings({ ai: { ...useSettings.getState().ai, usage: bumpUsage(useSettings.getState().ai.usage) } });
-        setState({ status: 'done', result, cached: false });
+        setState({ status: 'done', result, cached: false, source: 'ai' });
       } catch (e) {
         if (id !== run.current) return;
-        setState({ status: 'error', code: e instanceof AiError ? e.code : 'network' });
+        const code = e instanceof AiError ? e.code : 'network';
+        if (code !== 'privacy' && request.basic) return showBasic(); // Google cannot answer right now: still give the teacher something useful
+        setState({ status: 'error', code });
       }
     },
     [request, key, patchSettings],
   );
 
-  const shown: AiState<T> = state.status === 'idle' && saved ? { status: 'done', result: saved.result, cached: true } : state;
+  const shown: AiState<T> = state.status === 'idle' && saved ? { status: 'done', result: saved.result, cached: true, source: 'ai' } : state;
   return { state: shown, generate, ready, consent, limited, used: usedThisMonth(usage), freeLimit: FREE_AI_PER_MONTH, hasSaved: !!saved };
 }
