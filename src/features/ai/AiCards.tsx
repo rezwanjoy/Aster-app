@@ -37,7 +37,6 @@ function Shell({ ai, children, footer }: { ai: Omit<Ai, 'state'> & { state: AiSt
           <p className="text-muted">{t('ai.consent.sent')}</p>
           <p className="text-muted">{t('ai.consent.never')}</p>
           <p className="text-muted">{t('ai.consent.google')}</p>
-          <p className="text-muted">{t('ai.consent.minors')}</p>
           <Button onClick={consent}>{t('ai.consent.agree')}</Button>
         </div>
       ) : (

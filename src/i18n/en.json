@@ -1005,12 +1005,11 @@
       "withdraw": "Withdraw consent"
     },
     "consent": {
-      "title": "Before you turn on AI",
-      "sent": "What is sent to Google: topic names, mastery percentages, trends, attendance, goals and study time. Students appear only as letters (A, B…).",
-      "never": "What is never sent: student, guardian, teacher or center names, phone numbers, batch names, or fee details.",
-      "google": "Free-tier requests may be used by Google to improve its products. Paid tiers are not.",
-      "minors": "Google's free tier says it is for adults. The data here is about students, so be sure you are comfortable with that.",
-      "agree": "I understand, turn on"
+      "title": "Before you use AI insights",
+      "sent": "Sent: topic names, percentages, trends, attendance and goals. Students appear only as letters (A, B…).",
+      "never": "Never sent: names, phone numbers, batch or center names, or fees.",
+      "google": "Google's free tier may use requests to improve its products and is meant for adults.",
+      "agree": "I understand"
     },
     "soon": "AI insights are coming soon. Teachers will not need their own key: it will just work. Everything else in Aster works without it."
   },
