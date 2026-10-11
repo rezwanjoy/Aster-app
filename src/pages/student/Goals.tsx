@@ -9,7 +9,7 @@ import { Button, Card, Chip, IconButton } from '@/components/ui';
 import { IconSparkle, IconTarget } from '@/components/icons';
 import { GoalForm } from '@/features/student/GoalForm';
 import { goalFor, saveStudySettings } from '@/lib/goals';
-import { formatGrade } from '@/lib/grading';
+import { formatGrade, percentToGrade } from '@/lib/grading';
 import { goalProgress, overallMastery, overallTrend, studentTopicMastery } from '@/lib/mastery';
 import { nameOf } from '@/lib/names';
 import { studentSubjectIds } from '@/lib/scope';
@@ -22,6 +22,7 @@ export function StudentGoals() {
   const { t, n, d, lang } = useI18n();
   const { data, student, today } = useActiveStudent();
   const scale = useSettings((s) => s.gradingScale);
+  const bands = useSettings((s) => s.gradeBands);
   const [editing, setEditing] = useState<string | null>(null);
   const [updated, setUpdated] = useState(false);
   const subjects = useMemo(() => (student ? studentSubjectIds(data, student.id) : []), [data, student]);
@@ -57,8 +58,8 @@ export function StudentGoals() {
                 {goal ? (
                   <>
                     <div>
-                      <p className="font-display text-5xl font-semibold tracking-[-0.03em]">{scale === 'percent' ? `${n(goal.targetPercent)}%` : formatGrade(goal.targetPercent, scale)}</p>
-                      <p className="mt-1 text-sm text-muted">{goal.targetLabel} · ≥ {n(goal.targetPercent)}%{goal.byDate ? ` · ${t('student.goals.by', { date: d(goal.byDate) })}` : ''}</p>
+                      <p className="font-display text-5xl font-semibold tracking-[-0.03em]">{scale === 'percent' ? `${n(goal.targetPercent)}%` : formatGrade(goal.targetPercent, scale, bands)}</p>
+                      <p className="mt-1 text-sm text-muted">{percentToGrade(goal.targetPercent, bands).letter} · ≥ {n(goal.targetPercent)}%{goal.byDate ? ` · ${t('student.goals.by', { date: d(goal.byDate) })}` : ''}</p>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between gap-2 text-sm">

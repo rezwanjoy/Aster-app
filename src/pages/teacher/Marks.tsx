@@ -8,6 +8,8 @@ import { Reveal } from '@/components/motion';
 import { Button, Card, Chip, cx } from '@/components/ui';
 import { IconChevronRight, IconClock } from '@/components/icons';
 import { ExamForm } from '@/features/teacher/ExamForm';
+import { GradingSheet } from '@/features/teacher/GradingSheet';
+import { useGrading } from '@/lib/useGrading';
 import { LockedCard } from '@/features/premium/LockedCard';
 import { examSummary, missingMarks } from '@/lib/marks';
 import { nameOf } from '@/lib/names';
@@ -21,6 +23,8 @@ export function TeacherMarks() {
   const data = useAppData();
   const { batchIds, filter, today } = useScope();
   const [adding, setAdding] = useState(false);
+  const [grading, setGrading] = useState(false);
+  const { show } = useGrading();
 
   const exams = useMemo(() => data.assessments.filter((a) => batchIds.includes(a.batchId)), [data.assessments, batchIds]);
   const upcoming = exams.filter((a) => a.date > today).sort((a, b) => a.date.localeCompare(b.date));
@@ -54,9 +58,9 @@ export function TeacherMarks() {
           </div>
           {s.scored > 0 ? (
             <dl className="grid grid-cols-3 gap-2 text-xs">
-              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.average')}</dt><dd className="num font-semibold">{n(Math.round(s.avgPct as number))}%</dd></div>
-              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.highest')}</dt><dd className="truncate font-semibold">{s.highest && `${nm({ id: s.highest.studentId }).split(' ')[0]} ${n(Math.round(s.highest.pct))}%`}</dd></div>
-              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.lowest')}</dt><dd className="truncate font-semibold">{s.lowest && `${nm({ id: s.lowest.studentId }).split(' ')[0]} ${n(Math.round(s.lowest.pct))}%`}</dd></div>
+              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.average')}</dt><dd className="num font-semibold">{show(s.avgPct as number)}</dd></div>
+              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.highest')}</dt><dd className="truncate font-semibold">{s.highest && `${nm({ id: s.highest.studentId }).split(' ')[0]} ${show(s.highest.pct)}`}</dd></div>
+              <div className="rounded-xl border border-line bg-surface-2 p-2"><dt className="text-muted">{t('marks.lowest')}</dt><dd className="truncate font-semibold">{s.lowest && `${nm({ id: s.lowest.studentId }).split(' ')[0]} ${show(s.lowest.pct)}`}</dd></div>
             </dl>
           ) : null}
           <div className="flex items-center justify-between gap-2 text-xs text-muted">
@@ -70,7 +74,7 @@ export function TeacherMarks() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow={t('teacher.marks.eyebrow')} title={t('page.teacher.marks.title')} desc={t('page.teacher.marks.desc')} aside={<Button onClick={() => setAdding(true)} disabled={data.batches.length === 0}>+ {t('marks.addExam')}</Button>} />
+      <PageHeader eyebrow={t('teacher.marks.eyebrow')} title={t('page.teacher.marks.title')} desc={t('page.teacher.marks.desc')} aside={<div className="flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setGrading(true)}>{t('marks.grading')}</Button><Button onClick={() => setAdding(true)} disabled={data.batches.length === 0}>+ {t('marks.addExam')}</Button></div>} />
 
       {exams.length === 0 && (
         <Card className="space-y-3 text-center">
@@ -95,6 +99,7 @@ export function TeacherMarks() {
 
       <LockedCard id="paper" />
 
+      <GradingSheet open={grading} onClose={() => setGrading(false)} />
       <ExamForm open={adding} exam={null} defaultBatchId={batchIds[0]} today={today} onClose={() => setAdding(false)} onSaved={(id) => navigate(`${base}/marks/${id}`)} />
     </div>
   );

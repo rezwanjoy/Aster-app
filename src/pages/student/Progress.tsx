@@ -15,10 +15,13 @@ import { goalProgress, assessmentTotals, overallMastery, overallTrend, studentTo
 import { examStudents, studentPct } from '@/lib/marks';
 import { studentSubjectIds } from '@/lib/scope';
 import { useActiveStudent } from '@/store/hooks';
+import { useSettings } from '@/store/settings';
+import { percentToGrade } from '@/lib/grading';
 
 export function StudentProgress() {
   const { t, n, d, lang } = useI18n();
   const { data, student, today } = useActiveStudent();
+  const bands = useSettings((s) => s.gradeBands);
   const [picked, setPicked] = useState<string | null>(null);
   const [reporting, setReporting] = useState(false);
   const subjects = useMemo(() => (student ? studentSubjectIds(data, student.id) : []), [data, student]);
@@ -54,7 +57,7 @@ export function StudentProgress() {
         <>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
             <StatCard i={1} icon={IconChart} label={t('student.progress.current')} value={Math.round(calc.current ?? 0)} suffix="%" hint={calc.current === null ? t('student.progress.noMarks') : t('student.progress.currentHint')} />
-            <StatCard i={2} icon={IconTarget} label={t('student.progress.goal')} value={calc.goal?.targetPercent ?? 0} suffix="%" hint={calc.goal ? `${calc.goal.targetLabel} · ${t(`goalStatus.${calc.progress?.status ?? 'no_data'}`)}` : t('studentDetail.noGoal')} />
+            <StatCard i={2} icon={IconTarget} label={t('student.progress.goal')} value={calc.goal?.targetPercent ?? 0} suffix="%" hint={calc.goal ? `${percentToGrade(calc.goal.targetPercent, bands).letter} · ${t(`goalStatus.${calc.progress?.status ?? 'no_data'}`)}` : t('studentDetail.noGoal')} />
             <div className="col-span-2 lg:col-span-1">
               <StatCard i={3} icon={IconCalendarCheck} label={t('common.attendance')} value={calc.att.pct ?? 0} suffix="%" hint={t('studentDetail.last8w')} />
             </div>

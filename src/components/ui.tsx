@@ -23,7 +23,7 @@ export function Button({ variant = 'primary', className, type = 'button', ...res
     <button
       type={type}
       className={cx(
-        'press inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold',
+        'press inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100',
         buttonVariants[variant],
         className,
       )}

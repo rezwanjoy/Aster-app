@@ -23,6 +23,7 @@ import { studentSubjectIds } from '@/lib/scope';
 import { whatsappLink } from '@/lib/whatsapp';
 import { useAppData, useToday } from '@/store/hooks';
 import { useSettings } from '@/store/settings';
+import { percentToGrade } from '@/lib/grading';
 
 const feeBand: Record<FeeStatus, MasteryBand> = { paid: 'green', partial: 'yellow', due: 'unknown', overdue: 'red' };
 
@@ -35,6 +36,7 @@ export function TeacherStudentDetail() {
   const data = useAppData();
   const today = useToday();
   const banglaNumerals = useSettings((s) => s.banglaNumerals);
+  const bands = useSettings((s) => s.gradeBands);
   const student = data.students.find((s) => s.id === id);
   const [subjectPick, setSubjectPick] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
@@ -113,7 +115,7 @@ export function TeacherStudentDetail() {
         <StatCard i={1} icon={IconChart} label={t('common.mastery')} value={Math.round(insight.overall ?? 0)} suffix="%" hint={subjectId ? subjectName(subjectId) : undefined} />
         <StatCard i={2} icon={IconCalendarCheck} label={t('common.attendance')} value={att.pct ?? 0} suffix="%" hint={t('studentDetail.last8w')} />
         <StatCard i={3} icon={IconWallet} label={t('studentDetail.feesOwed')} value={owed} prefix="৳" hint={owed ? t('studentDetail.feesOpen') : t('studentDetail.feesClear')} />
-        <StatCard i={4} icon={IconTarget} label={t('studentDetail.goal')} value={goal?.target ?? 0} suffix="%" hint={goal ? `${goal.label} · ${t(`goalStatus.${goal.status}`)}` : t('studentDetail.noGoal')} />
+        <StatCard i={4} icon={IconTarget} label={t('studentDetail.goal')} value={goal?.target ?? 0} suffix="%" hint={goal ? `${percentToGrade(goal.target, bands).letter} · ${t(`goalStatus.${goal.status}`)}` : t('studentDetail.noGoal')} />
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-6">

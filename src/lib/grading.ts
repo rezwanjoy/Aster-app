@@ -1,12 +1,7 @@
 // Grading: percentage ↔ GPA / letter with editable bands (brief §8.4).
-import type { GradingScale } from '@/types';
+import type { GradeBand, GradingScale } from '@/types';
 
-export interface GradeBand {
-  /** lowest percentage that earns this grade */
-  min: number;
-  letter: string;
-  gpa: number;
-}
+export type { GradeBand };
 
 /**
  * Bangladesh-style GPA 5.0 table.
@@ -22,7 +17,8 @@ export const DEFAULT_GRADE_BANDS: GradeBand[] = [
   { min: 0, letter: 'F', gpa: 0.0 },
 ];
 
-const sorted = (bands: GradeBand[]) => [...bands].sort((a, b) => b.min - a.min);
+/** Highest grade first. */
+export const sorted = (bands: GradeBand[]) => [...bands].sort((a, b) => b.min - a.min);
 
 /** The band a percentage falls in. Out-of-range input is clamped to 0-100. */
 export function percentToGrade(pct: number, bands: GradeBand[] = DEFAULT_GRADE_BANDS): GradeBand {
@@ -43,14 +39,48 @@ export function formatGrade(pct: number, scale: GradingScale, bands: GradeBand[]
   return scale === 'gpa5' ? g.gpa.toFixed(2) : g.letter;
 }
 
-/** Bands must start at 0, have unique minimums, and GPA must not rise as the minimum falls. */
-export function validateBands(bands: GradeBand[]): string[] {
-  const errors: string[] = [];
+export type BandProblem =
+  | { code: 'none' }
+  | { code: 'noZero' }
+  | { code: 'sameMin' }
+  | { code: 'range' }
+  | { code: 'blankLetter' }
+  | { code: 'sameLetter'; letter: string }
+  | { code: 'gpaRange' }
+  | { code: 'gpaOrder'; lower: string; higher: string };
+
+/** Everything wrong with a grade table, as codes the screen can word in either language. */
+export function bandProblems(bands: GradeBand[]): BandProblem[] {
   const list = sorted(bands);
-  if (!list.length) return ['Add at least one grade'];
-  if (list[list.length - 1].min !== 0) errors.push('The lowest grade must start at 0%');
-  if (new Set(list.map((b) => b.min)).size !== list.length) errors.push('Two grades start at the same percentage');
-  if (list.some((b) => b.min < 0 || b.min > 100)) errors.push('Percentages must be between 0 and 100');
-  for (let i = 1; i < list.length; i++) if (list[i].gpa > list[i - 1].gpa) errors.push(`${list[i].letter} has a higher GPA than ${list[i - 1].letter}`);
-  return errors;
+  if (!list.length) return [{ code: 'none' }];
+  const out: BandProblem[] = [];
+  if (list[list.length - 1].min !== 0) out.push({ code: 'noZero' });
+  if (new Set(list.map((b) => b.min)).size !== list.length) out.push({ code: 'sameMin' });
+  if (list.some((b) => !Number.isFinite(b.min) || b.min < 0 || b.min > 100)) out.push({ code: 'range' });
+  if (list.some((b) => !b.letter.trim())) out.push({ code: 'blankLetter' });
+  const seen = new Set<string>();
+  for (const b of list) {
+    const k = b.letter.trim().toLowerCase();
+    if (k && seen.has(k)) out.push({ code: 'sameLetter', letter: b.letter.trim() });
+    seen.add(k);
+  }
+  if (list.some((b) => !Number.isFinite(b.gpa) || b.gpa < 0 || b.gpa > 10)) out.push({ code: 'gpaRange' });
+  for (let i = 1; i < list.length; i++) if (list[i].gpa > list[i - 1].gpa) out.push({ code: 'gpaOrder', lower: list[i].letter, higher: list[i - 1].letter });
+  return out;
+}
+
+/** Plain-English version of {@link bandProblems} (used by tests and logs; screens use the codes). */
+export function validateBands(bands: GradeBand[]): string[] {
+  return bandProblems(bands).map((p) => {
+    switch (p.code) {
+      case 'none': return 'Add at least one grade';
+      case 'noZero': return 'The lowest grade must start at 0%';
+      case 'sameMin': return 'Two grades start at the same percentage';
+      case 'range': return 'Percentages must be between 0 and 100';
+      case 'blankLetter': return 'Every grade needs a name';
+      case 'sameLetter': return `Two grades are both called ${p.letter}`;
+      case 'gpaRange': return 'GPA must be between 0 and 10';
+      case 'gpaOrder': return `${p.lower} has a higher GPA than ${p.higher}`;
+    }
+  });
 }

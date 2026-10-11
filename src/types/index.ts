@@ -204,6 +204,12 @@ export type CollectionKey =
 export type Theme = 'light' | 'dark' | 'system';
 export type Mode = 'teacher' | 'center' | 'student';
 export type GradingScale = 'percent' | 'gpa5' | 'letter';
+export interface GradeBand {
+  /** lowest percentage that earns this grade */
+  min: number;
+  letter: string;
+  gpa: number;
+}
 
 export interface Settings {
   lang: Lang;
@@ -219,6 +225,8 @@ export interface Settings {
   /** Global teacher batch switcher; "all" = every batch. */
   batchFilter: ID | 'all';
   gradingScale: GradingScale;
+  /** the teacher's own grade table (letter, GPA and the lowest % for each grade) */
+  gradeBands: GradeBand[];
   masteryBands: { redBelow: number; greenFrom: number };
   reportStyle: { accent: string; teacherMessage: string };
   reminderTemplate: L10n; // placeholders: {student} {amount} {month} {center}

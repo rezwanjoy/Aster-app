@@ -1,4 +1,5 @@
 import type { Settings } from '@/types';
+import { DEFAULT_GRADE_BANDS } from '@/lib/grading';
 
 export const DEFAULT_SETTINGS: Settings = {
   lang: 'en',
@@ -9,6 +10,7 @@ export const DEFAULT_SETTINGS: Settings = {
   activeStudentId: undefined,
   batchFilter: 'all',
   gradingScale: 'percent',
+  gradeBands: DEFAULT_GRADE_BANDS,
   masteryBands: { redBelow: 50, greenFrom: 70 },
   reportStyle: { accent: '#5b3bd6', teacherMessage: '' },
   reminderTemplate: {

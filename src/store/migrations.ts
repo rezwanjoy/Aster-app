@@ -5,7 +5,7 @@ import { DEFAULT_SETTINGS } from './defaults';
 import { addTeachers } from '@/lib/teachers';
 
 export const DATA_VERSION = 3;
-export const SETTINGS_VERSION = 5;
+export const SETTINGS_VERSION = 6;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type MigrationStep = (state: any) => any;
@@ -17,7 +17,7 @@ export const dataMigrations: MigrationSteps = {
   2: (d) => ({ ...d, salaries: d?.salaries ?? [] }),
 };
 
-/** Settings. v1 → v2 added the grading, AI, report and batch-filter fields; v2 → v3 added the welcome screen flag; v3 → v4 added AI consent and the default model; v4 → v5 removed the on-device AI key. */
+/** Settings. v1 → v2 added the grading, AI, report and batch-filter fields; v2 → v3 added the welcome screen flag; v3 → v4 added AI consent and the default model; v4 → v5 removed the on-device AI key; v5 → v6 added the editable grade table. */
 export const settingsMigrations: MigrationSteps = {
   1: (s) => ({ ...DEFAULT_SETTINGS, ...s, ai: { ...DEFAULT_SETTINGS.ai, ...(s?.ai ?? {}) } }),
   // existing users already chose how to use the app, so they skip the welcome screen
@@ -28,6 +28,8 @@ export const settingsMigrations: MigrationSteps = {
     const { apiKey: _key, enabled: _on, ...ai } = s?.ai ?? {};
     return { ...s, ai: { ...DEFAULT_SETTINGS.ai, ...ai } };
   },
+  // v5 → v6: teachers can edit their own grade table
+  5: (s) => ({ ...s, gradeBands: s?.gradeBands ?? DEFAULT_SETTINGS.gradeBands }),
 };
 
 /** Run every step from `from` up to `to`. Throws if a step is missing or the data is from the future. */

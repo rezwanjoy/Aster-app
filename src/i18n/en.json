@@ -534,6 +534,7 @@
     "back": "All exams",
     "complete": "All marks entered",
     "emptyBody": "Create an exam, choose the topics it covers, then enter each student's marks per topic.",
+    "grading": "Grading",
     "gridCaption": "Marks by student and topic",
     "gridHelp": "Tab moves right, Enter or the arrow keys move up and down. You can paste a block of marks from a spreadsheet.",
     "highest": "Highest",
@@ -1234,5 +1235,33 @@
     "undo": "Undo",
     "markPaid": "Mark paid",
     "setHint": "Change a salary by editing the teacher on the Batches page."
+  },
+  "gradingSheet": {
+    "title": "Grading",
+    "intro": "Set how marks are shown and where each grade starts. Your table is used on Marks, Goals and student pages on this device.",
+    "show": "Show marks as",
+    "table": "Grade table",
+    "grade": "Grade",
+    "from": "From %",
+    "gpa": "GPA",
+    "gradeN": "Grade {n}: name",
+    "fromN": "Grade {n}: lowest percentage",
+    "gpaN": "Grade {n}: GPA",
+    "remove": "Remove grade {grade}",
+    "add": "Add a grade",
+    "reset": "Reset to default",
+    "hint": "A grade starts at its percentage and runs up to the next one. The lowest grade must start at 0%.",
+    "try": "Try a mark",
+    "tryLabel": "Try this percentage",
+    "err": {
+      "none": "Add at least one grade.",
+      "noZero": "The lowest grade must start at 0%.",
+      "sameMin": "Two grades start at the same percentage.",
+      "range": "Percentages must be numbers from 0 to 100.",
+      "blankLetter": "Every grade needs a name.",
+      "sameLetter": "Two grades are both called {letter}.",
+      "gpaRange": "GPA must be a number from 0 to 10.",
+      "gpaOrder": "{lower} has a higher GPA than {higher}. A lower grade cannot have a higher GPA."
+    }
   }
 }

@@ -5,14 +5,16 @@ import { Dialog } from '@/components/Dialog';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
 import { Field, FormGrid, TextInput, ToggleChip } from '@/components/forms';
 import { goalFor, removeGoal, saveGoal } from '@/lib/goals';
-import { DEFAULT_GRADE_BANDS, percentToGrade } from '@/lib/grading';
+import { percentToGrade, sorted } from '@/lib/grading';
+import { useSettings } from '@/store/settings';
 import { isValidISODate } from '@/lib/dates';
 import { useData } from '@/store/data';
 import { useAppData } from '@/store/hooks';
 
 type Props = { open: boolean; studentId: string; subjectId: string; onClose: () => void };
 
-const QUICK = ['A+', 'A', 'A-', 'B'] as const;
+/** The top four grades of the teacher's table (A+, A, A-, B by default) become one-tap targets. */
+const QUICK_COUNT = 4;
 
 /** Set the target for one subject: a percentage (with grade shortcuts) and an optional date. */
 export function GoalForm(props: Props) {
@@ -22,6 +24,8 @@ export function GoalForm(props: Props) {
 function Inner({ studentId, subjectId, onClose }: Props) {
   const { t, n, lang } = useI18n();
   const data = useAppData();
+  const bands = useSettings((s) => s.gradeBands);
+  const quick = sorted(bands).filter((b) => b.min >= 1).slice(0, QUICK_COUNT);
   const existing = goalFor(data, studentId, subjectId);
   const [pct, setPct] = useState(String(existing?.targetPercent ?? 80));
   const [by, setBy] = useState(existing?.byDate ?? '');
@@ -37,7 +41,7 @@ function Inner({ studentId, subjectId, onClose }: Props) {
   const save = () => {
     setTouched(true);
     if (errors.pct || errors.by) return;
-    useData.getState().apply((d) => saveGoal(d, { studentId, subjectId, targetPercent: value, byDate: by || undefined }));
+    useData.getState().apply((d) => saveGoal(d, { studentId, subjectId, targetPercent: value, byDate: by || undefined }, bands));
     onClose();
   };
 
@@ -59,14 +63,11 @@ function Inner({ studentId, subjectId, onClose }: Props) {
           <fieldset className="space-y-2">
             <legend className="text-sm font-medium">{t('goalForm.quick')}</legend>
             <div className="flex flex-wrap gap-2">
-              {QUICK.map((g) => {
-                const min = DEFAULT_GRADE_BANDS.find((b) => b.letter === g)!.min;
-                return <ToggleChip key={g} on={Number(pct) === min} onClick={() => setPct(String(min))}>{g} · {n(min)}%</ToggleChip>;
-              })}
+              {quick.map((b) => <ToggleChip key={b.letter} on={Number(pct) === b.min} onClick={() => setPct(String(b.min))}>{b.letter} · {n(b.min)}%</ToggleChip>)}
             </div>
           </fieldset>
           <FormGrid>
-            <Field label={t('goalForm.percent')} error={touched ? errors.pct : undefined} hint={Number.isFinite(value) && value >= 1 && value <= 100 ? t('goalForm.equals', { grade: percentToGrade(value).letter }) : undefined}>
+            <Field label={t('goalForm.percent')} error={touched ? errors.pct : undefined} hint={Number.isFinite(value) && value >= 1 && value <= 100 ? t('goalForm.equals', { grade: percentToGrade(value, bands).letter }) : undefined}>
               {(id, d) => <TextInput id={id} inputMode="numeric" aria-describedby={d} aria-invalid={touched && !!errors.pct} value={pct} onChange={(e) => setPct(e.target.value)} />}
             </Field>
             <Field label={t('goalForm.by')} error={touched ? errors.by : undefined}>
