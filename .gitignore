@@ -32,3 +32,6 @@ CLAUDE.md
 Thumbs.db
 *.log
 npm-debug.log*
+
+# screenshots for the demo video
+demo-screens/
